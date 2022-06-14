@@ -32,5 +32,5 @@ global.process.env.NODE_ENV = __DEV__ ? 'development' : 'production';
 global.process.version = 'v9.40';
   
 global.location = {
-    protocol: 'https',
+    protocol: 'https', 
 }
