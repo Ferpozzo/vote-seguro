@@ -18,3 +18,4 @@ registerRootComponent(withWalletConnect(App, {
       asyncStorage: AsyncStorage,
     },
   }));
+ 
