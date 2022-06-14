@@ -9,12 +9,22 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
+  Início: NavigatorScreenParams<RootTabParamList> | undefined;
+  VotationResults: {
+    votation: Array<any>
+  } | undefined;
+  VotationDetail: {
+    votation: Array<any>
+  } | undefined;
+  Vote: {
+    candidate: Array<any>
+  } | undefined;
   Modal: undefined;
   NotFound: undefined;
 };

@@ -16,6 +16,7 @@ const shortenAddress = (address: string) => {
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   const connector = useWalletConnect();
+  /* 
 
   const connectWallet = React.useCallback(() => {
     return connector.connect();
@@ -23,21 +24,21 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 
   const killSession = React.useCallback(() => {
     return connector.killSession();
-  }, [connector]);
+  }, [connector]); */
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       {!connector.connected && (
-        <TouchableOpacity onPress={connectWallet} style={styles.buttonStyle}>
+        <TouchableOpacity onPress={() => console.log('')} style={styles.buttonStyle}>
           <Text style={styles.buttonTextStyle}>Connect a Wallet</Text>
         </TouchableOpacity>
       )}
       {!!connector.connected && (
         <>
           <Text>{shortenAddress(connector.accounts[0])}</Text>
-          <TouchableOpacity onPress={killSession} style={styles.buttonStyle}>
+          <TouchableOpacity onPress={() => console.log('')} style={styles.buttonStyle}>
             <Text style={styles.buttonTextStyle}>Log out</Text>
           </TouchableOpacity>
         </>

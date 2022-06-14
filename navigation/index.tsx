@@ -7,15 +7,21 @@ import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Button } from 'galio-framework';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import Home from '../screens/Home';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import Login from '../screens/users/Login';
+import VotationDetail from '../screens/votations/VotationDetail';
+import VotationResults from '../screens/votations/VotationResults';
+import Vote from '../screens/votations/Vote';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -37,8 +43,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+    <Stack.Navigator >
+      <Stack.Screen name="Root" component={Login} options={({ navigation }) => ({
+        headerShown: false
+      })} />
+      <Stack.Screen name="Início" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name="VotationDetail" component={VotationDetail} initialParams={{ votation: [] }} options={{ headerShown: false }} />
+      <Stack.Screen name="VotationResults" component={VotationResults} initialParams={{ votation: [] }} options={{ headerShown: false }} />
+      <Stack.Screen name="Vote" component={Vote} initialParams={{ candidate: [] }} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
